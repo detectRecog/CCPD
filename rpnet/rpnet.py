@@ -34,7 +34,7 @@ ap.add_argument("-w", "--writeFile", default='fh02.out',
                 help="file for output")
 args = vars(ap.parse_args())
 
-wR2Path = '/mnt/whole4ps/wR2/wR2.pth221'
+wR2Path = 'wR2.pth221'
 use_gpu = torch.cuda.is_available()
 print (use_gpu)
 

@@ -104,6 +104,10 @@ Input parameters are well commented in python codes. You can increase the batchS
 
 
 
+#### For convinence, we provide a well-trained wR2 model named "wR2.pth221" in the rpnet/ folder for easy training RPnet.
+
+
+
 First train the localization network defined in wR2.py as follows:
 
 ```
@@ -117,6 +121,18 @@ After wR2 finetunes, we train the RPnet defined in rpnet.py. Please specify the 
 ```
 
   python rpnet.py -i [TRAIN IMG FOLDERS] -b 4 -se 0 -f [MODEL SAVE FOLDER] -t [TEST IMG FOLDERS]
+
+```
+
+
+
+## Test demo instructions
+
+After fine-tuning RPnet, you need to uncompress a zip folder and select it as the test directory. The argument after -s is a folder for storing failure cases.
+
+```
+
+  python rpnetEval.py -m [MODEL PATH, like /**/fh02.pth] -i [TEST DIR] -s [FAILURE SAVE DIR]
 
 ```
 

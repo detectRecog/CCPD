@@ -32,10 +32,10 @@ class labelFpsDataLoader(Dataset):
         resizedImage = np.transpose(resizedImage, (2,0,1))
         resizedImage = resizedImage.astype('float32')
         resizedImage /= 255.0
-        lbl = img_name.split('/')[-1].split('.')[0].split('-')[-1]
+        lbl = img_name.split('/')[-1].split('.')[0].split('-')[-3]
 
         iname = img_name.rsplit('/', 1)[-1].rsplit('.', 1)[0].split('-')
-        fps = [[int(eel) for eel in el.split('&')] for el in iname[0].split('_')]
+        fps = [[int(eel) for eel in el.split('&')] for el in iname[3].split('_')]
         leftUp, rightDown = [min([fps[el][0] for el in range(4)]), min([fps[el][1] for el in range(4)])], [
             max([fps[el][0] for el in range(4)]), max([fps[el][1] for el in range(4)])]
         ori_w, ori_h = [float(int(el)) for el in iname[1].split('_')]
@@ -67,8 +67,7 @@ class labelTestDataLoader(Dataset):
         resizedImage = np.transpose(resizedImage, (2,0,1))
         resizedImage = resizedImage.astype('float32')
         resizedImage /= 255.0
-        lbl = img_name.split('/')[-1].split('.')[0].split('-')[-1]
-
+        lbl = img_name.split('/')[-1].split('.')[0].split('-')[-3]
         return resizedImage, lbl, img_name
 
 
@@ -94,9 +93,9 @@ class ChaLocDataLoader(Dataset):
         resizedImage = np.reshape(resizedImage, (resizedImage.shape[2], resizedImage.shape[0], resizedImage.shape[1]))
 
         iname = img_name.rsplit('/', 1)[-1].rsplit('.', 1)[0].split('-')
-        fps = [[int(eel) for eel in el.split('&')] for el in iname[0].split('_')]
+        fps = [[int(eel) for eel in el.split('&')] for el in iname[3].split('_')]
         leftUp, rightDown = [min([fps[el][0] for el in range(4)]), min([fps[el][1] for el in range(4)])], [max([fps[el][0] for el in range(4)]), max([fps[el][1] for el in range(4)])]
-        ori_w, ori_h = [float(int(el)) for el in iname[1].split('_')]
+        ori_w, ori_h = 720, 1160
         new_labels = [(leftUp[0] + rightDown[0])/(2*ori_w), (leftUp[1] + rightDown[1])/(2*ori_h), (rightDown[0]-leftUp[0])/ori_w, (rightDown[1]-leftUp[1])/ori_h]
 
         resizedImage = resizedImage.astype('float32')
