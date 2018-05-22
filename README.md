@@ -14,7 +14,7 @@ This repository is designed to provide an open-source dataset for license plate 
 
 
 
-and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_.
+and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. The google drive link for directly downloading the whole dataset will be provided before 2018/07/15.
 
 
 
