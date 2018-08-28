@@ -12,10 +12,7 @@ Towards End-to-End License Plate Detection and Recognition: A Large Dataset and 
 
 This repository is designed to provide an open-source dataset for license plate detection and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. 
 
-## The google drive link for directly downloading the whole dataset will be provided before 2018/07/15.
-
-
-Currently, we provide 1000 sample images in each sub-dataset for the convenience of reviewers. Currently, full access to CCPD can be required easily by signing the agreement.pdf file by a professor or an institute and send the agreement to detectrecog@gmail.com using the official email address.
+## The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). This dataset is open-source under MIT license. Files under this git repo are sample images. More details about this dataset are avialable at ECCV 2018 paper _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_.
 
 
 
