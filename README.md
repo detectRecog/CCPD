@@ -12,7 +12,9 @@ Towards End-to-End License Plate Detection and Recognition: A Large Dataset and 
 
 This repository is designed to provide an open-source dataset for license plate detection and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. 
 
-## The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). This dataset is open-source under MIT license. Files under this git repo are sample images. More details about this dataset are avialable at ECCV 2018 paper _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_.
+## The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). 
+
+This dataset is open-source under MIT license. Files under this git repo are sample images. More details about this dataset are avialable at ECCV 2018 paper _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_.
 
 
 
