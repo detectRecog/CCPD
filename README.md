@@ -16,8 +16,17 @@ This repository is designed to provide an open-source dataset for license plate 
 
 ## The baiduyun link for directly downloading the whole dataset: [baiduyun 12GB](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
 
-This dataset is open-source under MIT license. Files under this git repo are sample images. More details about this dataset are avialable at ECCV 2018 paper _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_.
+This dataset is open-source under MIT license. Files under this git repo are sample images. More details about this dataset are avialable at ECCV 2018 paper _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. If you are benefited from this paper, please cite our paper as follows:
 
+```
+@inproceedings{xu2018towards,
+  title={Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline},
+  author={Xu, Zhenbo and Yang, Wei and Meng, Ajin and Lu, Nanxue and Huang, Huan},
+  booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},
+  pages={255--271},
+  year={2018}
+}
+```
 
 
 ## Specification of the categorise above:
