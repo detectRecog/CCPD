@@ -12,11 +12,11 @@ Towards End-to-End License Plate Detection and Recognition: A Large Dataset and 
 
 This repository is designed to provide an open-source dataset for license plate detection and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. 
 
-## The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). 
+### The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). 
 
-## The baiduyun link for directly downloading the whole dataset: [baiduyun 12GB](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
+### The baiduyun link for directly downloading the whole dataset: [baiduyun 12GB](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
 
-## The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
+### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
 
 - Location module wR2.pth [google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)
 - rpnet model fh02.pth [google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
@@ -71,9 +71,12 @@ A sample image name is "025-95_113-154&383_386&473-386&473_177&454_154&383_363&4
 
 Input parameters are well commented in python codes(python2/3 are both ok, the version of pytorch should be >= 0.3). You can increase the batchSize as long as enough GPU memory is available.
 
+#### Enviorment (not so important as long as you can run the code): 
 
+- python: pytorch(0.3.1), numpy(1.14.3), cv2(2.4.9.1). 
+- system: Cuda(release 9.1, V9.1.85)
 
-#### For convinence, we provide a well-trained wR2 model named "wR2.pth221" in the rpnet/ folder for easy training RPnet.
+#### For convinence, we provide a trained wR2 model and a trained rpnet model, you can download them from google drive or baiduyun.
 
 
 
