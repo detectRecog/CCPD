@@ -9,11 +9,11 @@ from torch.autograd import Variable
 import numpy as np
 import os
 import argparse
-from imutils import paths
-import random
 from time import time
 from load_data import *
 from roi_pooling import roi_pooling_ims
+from torch.optim import lr_scheduler
+
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--images", required=True,
@@ -34,7 +34,7 @@ ap.add_argument("-w", "--writeFile", default='fh02.out',
                 help="file for output")
 args = vars(ap.parse_args())
 
-wR2Path = 'wR2.pth221'
+wR2Path = './wR2/wR2.pth2'
 use_gpu = torch.cuda.is_available()
 print (use_gpu)
 
@@ -305,6 +305,7 @@ optimizer_conv = optim.SGD(model_conv.parameters(), lr=0.001, momentum=0.9)
 
 dst = labelFpsDataLoader(trainDirs, imgSize)
 trainloader = DataLoader(dst, batch_size=batchSize, shuffle=True, num_workers=8)
+lrScheduler = lr_scheduler.StepLR(optimizer_conv, step_size=5, gamma=0.1)
 
 
 def isEqual(labelGT, labelP):
@@ -348,10 +349,13 @@ def train_model(model, criterion, optimizer, num_epochs=25):
     for epoch in range(epoch_start, num_epochs):
         lossAver = []
         model.train(True)
+        lrScheduler.step()
         start = time()
 
         for i, (XI, Y, labels, ims) in enumerate(trainloader):
-            # print('%s/%s %s' % (i, times, time()-start))
+            if not len(XI) == batchSize:
+                continue
+
             YI = [[int(ee) for ee in el.split('_')[:7]] for el in labels]
             Y = np.array([el.numpy() for el in Y]).T
             if use_gpu:
@@ -362,7 +366,10 @@ def train_model(model, criterion, optimizer, num_epochs=25):
                 y = Variable(torch.FloatTensor(Y), requires_grad=False)
             # Forward pass: Compute predicted y by passing x to the model
 
-            fps_pred, y_pred = model(x)
+            try:
+                fps_pred, y_pred = model(x)
+            except:
+                continue
 
             # Compute and print loss
             loss = 0.0
@@ -371,15 +378,16 @@ def train_model(model, criterion, optimizer, num_epochs=25):
             for j in range(7):
                 l = Variable(torch.LongTensor([el[j] for el in YI]).cuda(0))
                 loss += criterion(y_pred[j], l)
-            try:
-                lossAver.append(loss.data[0])
-            except:
-                pass
 
             # Zero gradients, perform a backward pass, and update the weights.
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
+
+            try:
+                lossAver.append(loss.data[0])
+            except:
+                pass
 
             if i % 50 == 1:
                 with open(args['writeFile'], 'a') as outF:
@@ -387,17 +395,10 @@ def train_model(model, criterion, optimizer, num_epochs=25):
                 torch.save(model.state_dict(), storeName)
         print ('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time()-start))
         model.eval()
-        if epoch % 5 == 0:
-            count, correct, error, precision, avgTime = eval(model, testDirs)
-            with open(args['writeFile'], 'a') as outF:
-                outF.write('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time() - start))
-                outF.write('*** total %s error %s precision %s avgTime %s\n' % (count, error, precision, avgTime))
-        else:
-            count, correct, error, precision, avgTime = eval(model, [testDirs[0]])
-            with open(args['writeFile'], 'a') as outF:
-                outF.write('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time() - start))
-                outF.write('### total %s error %s precision %s avgTime %s\n' % (count, error, precision, avgTime))
-
+        count, correct, error, precision, avgTime = eval(model, testDirs)
+        with open(args['writeFile'], 'a') as outF:
+            outF.write('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time() - start))
+            outF.write('*** total %s error %s precision %s avgTime %s\n' % (count, error, precision, avgTime))
         torch.save(model.state_dict(), storeName + str(epoch))
     return model
 
