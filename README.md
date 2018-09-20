@@ -16,7 +16,7 @@ This repository is designed to provide an open-source dataset for license plate 
 
 ## The baiduyun link for directly downloading the whole dataset: [baiduyun 12GB](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
 
-## The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): [Location module wR2.pth](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-) and [rpnet model (available tomorrow)]
+## The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): [Location module wR2.pth google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [Location module wR2.pth baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw), [rpnet model google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), and [rpnet model baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
 
 This dataset is open-source under MIT license. Files under this git repo are sample images. More details about this dataset are avialable at ECCV 2018 paper _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. If you are benefited from this paper, please cite our paper as follows:
 
@@ -74,7 +74,7 @@ Input parameters are well commented in python codes(python2/3 are both ok, the v
 
 
 
-First train the localization network defined in wR2.py as follows:
+First train the localization network (we provide one as before, you can download it from [google drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-) or [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)) defined in wR2.py as follows:
 
 ```
 
@@ -82,7 +82,7 @@ First train the localization network defined in wR2.py as follows:
 
 ```
 
-After wR2 finetunes, we train the RPnet defined in rpnet.py. Please specify the variable wR2Path (the path of the well-trained wR2 model) in rpnet.py.
+After wR2 finetunes, we train the RPnet (we provide one as before, you can download it from [google drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv) or [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ)) defined in rpnet.py. Please specify the variable wR2Path (the path of the well-trained wR2 model) in rpnet.py.
 
 ```
 
@@ -94,7 +94,7 @@ After wR2 finetunes, we train the RPnet defined in rpnet.py. Please specify the 
 
 ## Test demo instructions
 
-After fine-tuning RPnet, you need to uncompress a zip folder and select it as the test directory. The argument after -s is a folder for storing failure cases.
+After fine-tuning RPnet, you need to uncompress a zip folder and select it as the test directory. The argument after -s is a folder for storing failure cases. File rpnetEval.py is for testing thousands of images in the test directory and print precision. File rpnetTestSeveralImages.py is for evaluating several images in a folder and plot the results on images.
 
 ```
 
