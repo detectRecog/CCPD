@@ -8,8 +8,7 @@ Towards End-to-End License Plate Detection and Recognition: A Large Dataset and 
 
 # CCPD: Chinese City Parking Dataset
 
-
-Attention: there are some errors in dataloader and this is why training goes wrong. These two days I will correct these errors and uploaded a refined dataset && a test code && a well trained rpnet model.
+<span style="color:red">**Attention: there are some errors in dataloader and this is why training goes wrong. These two days I will correct these errors and uploaded a refined dataset && a test code && a well trained rpnet model.**</span>
 
 This repository is designed to provide an open-source dataset for license plate detection and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. 
 
