@@ -9,6 +9,7 @@ Towards End-to-End License Plate Detection and Recognition: A Large Dataset and 
 # CCPD: Chinese City Parking Dataset
 
 
+Attention: there are some errors in dataloader and this is why training goes wrong. These two days I will correct these errors and uploaded a refined dataset && a test code && a well trained rpnet model.
 
 This repository is designed to provide an open-source dataset for license plate detection and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. 
 
@@ -107,7 +108,7 @@ A sample image name is "025-95_113-154&383_386&473-386&473_177&454_154&383_363&4
 
 ## Training instructions
 
-Input parameters are well commented in python codes. You can increase the batchSize as long as enough GPU memory is available.
+Input parameters are well commented in python codes(python2/3 are both ok, the version of pytorch should be >= 0.3). You can increase the batchSize as long as enough GPU memory is available.
 
 
 
