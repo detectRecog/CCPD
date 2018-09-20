@@ -16,7 +16,10 @@ This repository is designed to provide an open-source dataset for license plate 
 
 ## The baiduyun link for directly downloading the whole dataset: [baiduyun 12GB](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
 
-## The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): [Location module wR2.pth google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [Location module wR2.pth baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw), [rpnet model google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), and [rpnet model baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
+## The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
+
+- Location module wR2.pth [google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)
+- rpnet model fh02.pth [google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
 
 This dataset is open-source under MIT license. Files under this git repo are sample images. More details about this dataset are avialable at ECCV 2018 paper _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. If you are benefited from this paper, please cite our paper as follows:
 
