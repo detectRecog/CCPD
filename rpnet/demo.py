@@ -15,8 +15,6 @@ ap.add_argument("-i", "--input", required=True,
                 help="path to the input folder")
 ap.add_argument("-m", "--model", required=True,
                 help="path to the model file")
-ap.add_argument("-s", "--store", required=True,
-                help="path to the store folder")
 args = vars(ap.parse_args())
 
 use_gpu = torch.cuda.is_available()
@@ -27,10 +25,6 @@ numPoints = 4
 imgSize = (480, 480)
 batchSize = 8 if use_gpu else 8
 resume_file = str(args["model"])
-sFolder = str(args["store"])
-sFolder = sFolder if sFolder[-1] == '/' else sFolder + '/'
-if not path.isdir(sFolder):
-    mkdir(sFolder)
 
 provNum, alphaNum, adNum = 38, 25, 35
 provinces = ["皖", "沪", "津", "渝", "冀", "晋", "蒙", "辽", "吉", "黑", "苏", "浙", "京", "闽", "赣", "鲁", "豫", "鄂", "湘", "粤", "桂",
@@ -291,3 +285,4 @@ for i, (XI, ims) in enumerate(trainloader):
     lpn = alphabets[labelPred[1]] + ads[labelPred[2]] + ads[labelPred[3]] + ads[labelPred[4]] + ads[labelPred[5]] + ads[labelPred[6]]
     cv2.putText(img, lpn, (int(left_up[0]), int(left_up[1])-20), cv2.FONT_ITALIC, 2, (0, 0, 255))
     cv2.imwrite(ims[0], img)
+
