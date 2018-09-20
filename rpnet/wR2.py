@@ -8,18 +8,17 @@ from torch.autograd import Variable
 import numpy as np
 import os
 import argparse
-from imutils import paths
-import random
 from time import time
 from load_data import *
+from torch.optim import lr_scheduler
 
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--images", required=True,
                 help="path to the input file")
-ap.add_argument("-n", "--epochs", default=10000,
+ap.add_argument("-n", "--epochs", default=25,
                 help="epochs for train")
-ap.add_argument("-b", "--batchsize", default=32,
+ap.add_argument("-b", "--batchsize", default=4,
                 help="batch size for train")
 ap.add_argument("-r", "--resume", default='111',
                 help="file for re-train")
@@ -154,10 +153,10 @@ class wR2(nn.Module):
         return x
 
 
-epoch_start = 1
+epoch_start = 0
 resume_file = str(args["resume"])
 if not resume_file == '111':
-    epoch_start = int(resume_file[resume_file.find('pth') + 3:]) + 1
+    # epoch_start = int(resume_file[resume_file.find('pth') + 3:]) + 1
     if not os.path.isfile(resume_file):
         print ("fail to load existed model! Existing ...")
         exit(0)
@@ -177,6 +176,8 @@ print(get_n_params(model_conv))
 
 criterion = nn.MSELoss()
 optimizer_conv = optim.SGD(model_conv.parameters(), lr=0.001, momentum=0.9)
+lrScheduler = lr_scheduler.StepLR(optimizer_conv, step_size=5, gamma=0.1)
+
 # optimizer_conv = optim.Adam(model_conv.parameters(), lr=0.01)
 
 # dst = LocDataLoader([args["images"]], imgSize)
@@ -188,7 +189,8 @@ def train_model(model, criterion, optimizer, num_epochs=25):
     # since = time.time()
     for epoch in range(epoch_start, num_epochs):
         lossAver = []
-        # model.train(True)
+        model.train(True)
+        lrScheduler.step()
         start = time()
 
         for i, (XI, YI) in enumerate(trainloader):
@@ -205,22 +207,23 @@ def train_model(model, criterion, optimizer, num_epochs=25):
 
             # Compute and print loss
             loss = 0.0
-            loss += 0.8 * nn.L1Loss().cuda()(y_pred[:][:2], y[:][:2])
-            loss += 0.2 * nn.L1Loss().cuda()(y_pred[:][2:], y[:][2:])
-            lossAver.append(loss.data[0])
+            if len(y_pred) == batchSize:
+                loss += 0.8 * nn.L1Loss().cuda()(y_pred[:][:2], y[:][:2])
+                loss += 0.2 * nn.L1Loss().cuda()(y_pred[:][2:], y[:][2:])
+                lossAver.append(loss.data[0])
 
-            # Zero gradients, perform a backward pass, and update the weights.
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
+                # Zero gradients, perform a backward pass, and update the weights.
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+                torch.save(model.state_dict(), storeName)
             if i % 50 == 1:
                 with open(args['writeFile'], 'a') as outF:
-                    outF.write('train %s images, use %s seconds, total %s iters\n' % (i*batchSize, time() - start, 2000.0/batchSize))
+                    outF.write('train %s images, use %s seconds, loss %s\n' % (i*batchSize, time() - start, sum(lossAver[-50:]) / len(lossAver[-50:])))
         print ('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time()-start))
         with open(args['writeFile'], 'a') as outF:
-            outF.write('%s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time()-start))
-        if epoch % 5 == 1:
-            torch.save(model.state_dict(), storeName + str(epoch))
+            outF.write('Epoch: %s %s %s\n' % (epoch, sum(lossAver) / len(lossAver), time()-start))
+        torch.save(model.state_dict(), storeName + str(epoch))
     return model
 
 
