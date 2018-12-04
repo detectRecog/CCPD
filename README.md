@@ -16,7 +16,7 @@ This repository is designed to provide an open-source dataset for license plate 
 
 ### The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). 
 
-### The baiduyun link for directly downloading the whole dataset: [baiduyun 12GB](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
+### The baiduyun link for directly downloading the whole dataset: [.zip(14GB)](https://pan.baidu.com/s/1SFUy5HlImM9w-Tw9kVuLZw), [.tar.bz2(12GB)](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
 
 ### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
 
