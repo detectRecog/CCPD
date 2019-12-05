@@ -1,6 +1,8 @@
 # CCPD (Chinese City Parking Dataset, ECCV) and SLPDR (single license plate detection and recognition)
 
-## UPdate on 10/03/2019. SLPDR (single license plate detection and recognition) Dataset is now publicly available. We are confident that images in subsets of SLPDR is much more challenging than previous CCPD with over 300k images and refined annotations. (If you are benefited from this dataset, please cite our paper.) It can be downloaded from:
+## UPdate on 10/03/2019. SLPDR (single license plate detection and recognition) Dataset is now publicly available. We are confident that images in subsets of SLPDR is much more challenging than previous CCPD with over 300k images and refined annotations. 
+
+(If you are benefited from this dataset, please cite our paper.) It can be downloaded from:
  - [Google Drive the first part](https://drive.google.com/open?id=1AX2U3K9V-UpB8TjiVH8pL3tetyPt3f0p) , [Google Drive the second part](https://drive.google.com/open?id=1Zg3MtIvDoi83B2bkT0hionMxPNceHUpV) 
  
  - [BaiduYun Drive](https://pan.baidu.com/s/1z1HWBe671Gn2ZAOApf9huA)
@@ -17,7 +19,7 @@ This repository is designed to provide an open-source dataset for license plate 
 }
 ```
 
-## Downloads(Dataset and models):
+## CCPD Downloads(Dataset and models):
 
 ### The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). 
 
