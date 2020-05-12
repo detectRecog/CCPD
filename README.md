@@ -24,6 +24,7 @@ As each image in CCPD contains only a single license plate (LP). Therefore, we d
 #### benchmark
 
 If you want to provide more baseline results or have problems about the provided results. Please raise an issue.
+##### detection
 
 |             | FPS |   AP  |   DB  |  Blur |   FN  | Rotate |  Tilt | Challenge |
 |---|---|---|---|---|---|---|---|---|
@@ -31,6 +32,13 @@ If you want to provide more baseline results or have problems about the provided
 |    SSD300   |  25 | 86.99 | 72.90 | 87.06 | 74.84 |  96.53 | 91.86 |   90.06   |
 |    SSD512   |  12 | 87.83 | 69.99 | 84.23 | 80.65 |  96.50 | 91.26 |   92.14   |
 |  YOLOv3-320 |  52 | 87.23 | 71.34 | 82.19 | 82.44 |  96.69 | 89.17 |   91.46   |
+
+##### recognition 
+We provide baseline methods for recognition by appending a LP recognition model HC (refer to paper <Holistic recognition of low quality license plates by cnn using track annotated data>) to the detector.
+
+|             | FPS |   AP  |   DB  |  Blur |   FN  | Rotate |  Tilt | Challenge |
+|---|---|---|---|---|---|---|---|---|
+| SSD512+HC |  11 | 43.42 | 34.47 | 25.83 | 45.24 |  52.82 | 52.04 |   44.62   |
 
 The column 'AP' shows the precision on all the test set. The test set contains six parts: DB(ccpd_db/), Blur(ccpd_blur), FN(ccpd_fn), Rotate(ccpd_rotate), Tilt(ccpd_tilt), Challenge(ccpd_challenge).
 
