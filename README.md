@@ -8,12 +8,6 @@ It can be downloaded from and extract by (tar xf CCPD2019.tar.xz):
  
  - [BaiduYun Drive(code: hm0u)](https://pan.baidu.com/s/1i5AOjAbtkwb17Zy-NQGqkw)
 
-### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
-
-- Location module wR2.pth [google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)
-- rpnet model fh02.pth [google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
-
-
 
 #### train\val\test split
 The split file is available under 'split/' folder.
@@ -72,6 +66,12 @@ Demo code and several images are provided under rpnet/ folder, after you obtain 
   python demo.py -i [ROOT/rpnet/demo/] -m [***/fh02.pth]
 
 ```
+
+### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
+
+We encourage the comparison with SOTA detector like FCOS rather than RPnet as the architecture of RPnet is very old fashioned.
+- Location module wR2.pth [google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)
+- rpnet model fh02.pth [google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
 
 ## Training instructions
 
