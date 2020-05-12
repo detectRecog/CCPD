@@ -1,11 +1,44 @@
-# CCPD (Chinese City Parking Dataset, ECCV) and PDRC (license Plate Detection and Recognition Challenge)
+# CCPD (Chinese City Parking Dataset, ECCV)
 
-## UPdate on 10/03/2019. PDRC (license Plate Detection and Recognition Challenge) Dataset is now publicly available. We are confident that images in subsets of SLPDR is much more challenging than previous CCPD with over 300k images and refined annotations. 
+## UPdate on 10/03/2019. CCPD Dataset is now updated. We are confident that images in subsets of CCPD is much more challenging than before with over 300k images and refined annotations. 
 
-(If you are benefited from this dataset, please cite our paper.) It can be downloaded from:
- - [Google Drive the first part](https://drive.google.com/open?id=1AX2U3K9V-UpB8TjiVH8pL3tetyPt3f0p) , [Google Drive the second part](https://drive.google.com/open?id=1Zg3MtIvDoi83B2bkT0hionMxPNceHUpV) 
+(If you are benefited from this dataset, please cite our paper.) 
+It can be downloaded from:
+ - [Google Drive TBD](www.baidu.com) 
  
  - [BaiduYun Drive](https://pan.baidu.com/s/1z1HWBe671Gn2ZAOApf9huA)
+
+### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
+
+- Location module wR2.pth [google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)
+- rpnet model fh02.pth [google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
+
+
+
+#### train\val\test split
+The split file is available under 'split/' folder.
+
+Images in CCPD-Base is split to train/val set. Sub-datasets (CCPD-DB, CCPD-Blur, CCPD-FN, CCPD-Rotate, CCPD-Tilt, CCPD-Challenge) in CCPD are exploited for test.
+
+### metric
+As each image in CCPD contains only a single license plate (LP). Therefore, we do not consider recall and concerntrate on precision. 
+
+- Detection. For each image, the detector outputs only one bounding box. The bounding box is considered to be correct if and only if its IoU with the ground truth bounding box is more than 70% (IoU > 0.7). Also, we compute AP on the test set. 
+
+- Recognition. A LP recognition is correct if and only if all characters in the LP number are correctly recognized.
+
+#### benchmark
+
+If you want to provide more baseline results or have problems about the provided results. Please raise an issue.
+
+|             | FPS |   AP  |   DB  |  Blur |   FN  | Rotate |  Tilt | Challenge |
+|---|---|---|---|---|---|---|---|---|
+| Faster-RCNN |  11 | 84.98 | 66.73 | 81.59 | 76.45 |  94.42 | 88.19 |   89.82   |
+|    SSD300   |  25 | 86.99 | 72.90 | 87.06 | 74.84 |  96.53 | 91.86 |   90.06   |
+|    SSD512   |  12 | 87.83 | 69.99 | 84.23 | 80.65 |  96.50 | 91.26 |   92.14   |
+|  YOLOv3-320 |  52 | 87.23 | 71.34 | 82.19 | 82.44 |  96.69 | 89.17 |   91.46   |
+
+The column 'AP' shows the precision on all the test set. The test set contains six parts: DB(ccpd_db/), Blur(ccpd_blur), FN(ccpd_fn), Rotate(ccpd_rotate), Tilt(ccpd_tilt), Challenge(ccpd_challenge).
 
 This repository is designed to provide an open-source dataset for license plate detection and recognition, described in _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. This dataset is open-source under MIT license. More details about this dataset are avialable at our ECCV 2018 paper (also available in this github) _《Towards End-to-End License Plate Detection and Recognition: A Large Dataset and Baseline》_. If you are benefited from this paper, please cite our paper as follows:
 
@@ -18,17 +51,6 @@ This repository is designed to provide an open-source dataset for license plate 
   year={2018}
 }
 ```
-
-## CCPD Downloads(Dataset and models):
-
-### The google drive link for directly downloading the whole dataset: [google drive 12GB](https://drive.google.com/open?id=1fFqCXjhk7vE9yLklpJurEwP9vdLZmrJd). 
-
-### The baiduyun link for directly downloading the whole dataset: [.zip(14GB)](https://pan.baidu.com/s/1SFUy5HlImM9w-Tw9kVuLZw), [.tar.bz2(12GB)](https://pan.baidu.com/s/1FH6pFOFF2MwyWiqn6vCzGA).
-
-### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
-
-- Location module wR2.pth [google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)
-- rpnet model fh02.pth [google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
 
 
 
