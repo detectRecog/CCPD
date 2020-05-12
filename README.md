@@ -4,7 +4,7 @@
 
 (If you are benefited from this dataset, please cite our paper.) 
 It can be downloaded from and extract by (tar xf CCPD2019.tar.xz):
- - [Google Drive TBD](www.baidu.com) 
+ - [Google Drive](https://drive.google.com/open?id=1rdEsCUcIUaYOVRkx5IMTRNA7PcGMmSgc) 
  
  - [BaiduYun Drive(code: hm0u)](https://pan.baidu.com/s/1i5AOjAbtkwb17Zy-NQGqkw)
 
