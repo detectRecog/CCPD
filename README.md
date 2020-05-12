@@ -3,10 +3,10 @@
 ## UPdate on 10/03/2019. CCPD Dataset is now updated. We are confident that images in subsets of CCPD is much more challenging than before with over 300k images and refined annotations. 
 
 (If you are benefited from this dataset, please cite our paper.) 
-It can be downloaded from:
+It can be downloaded from and extract by (tar xf CCPD2019.tar.xz):
  - [Google Drive TBD](www.baidu.com) 
  
- - [BaiduYun Drive](https://pan.baidu.com/s/1z1HWBe671Gn2ZAOApf9huA)
+ - [BaiduYun Drive(code: hm0u)](https://pan.baidu.com/s/1i5AOjAbtkwb17Zy-NQGqkw)
 
 ### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
 
