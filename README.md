@@ -58,8 +58,6 @@ This repository is designed to provide an open-source dataset for license plate 
 
 ## Specification of the categorise above:
 
-- **sample**: gives 6 example pictures for each sub-dataset(blur/challenge/db/fn/np/rotate/tilt).
-
 - **rpnet**: The training code for a license plate localization network and an end-to-end network which can detect the license plate bounding box and recognize the corresponding license plate number in a single forward. In addition, demo.py and demo folder are provided for playing demo.
 
 - **paper.pdf**: Our published eccv paper.
