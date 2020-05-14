@@ -34,7 +34,7 @@ If you want to provide more baseline results or have problems about the provided
 |  YOLOv3-320 |  52 | 87.23 | 71.34 | 82.19 | 82.44 |  96.69 | 89.17 |   91.46   |
 
 ##### recognition 
-We provide baseline methods for recognition by appending a LP recognition model HC (refer to paper <Holistic recognition of low quality license plates by cnn using track annotated data>) to the detector.
+We provide baseline methods for recognition by appending a LP recognition model Holistic-CNN (HC) (refer to paper 'Holistic recognition of low quality license plates by cnn using track annotated data') to the detector.
 
 |             | FPS |   AP  |   DB  |  Blur |   FN  | Rotate |  Tilt | Challenge |
 |---|---|---|---|---|---|---|---|---|
