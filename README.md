@@ -14,7 +14,8 @@ The split file is available under 'split/' folder.
 
 Images in CCPD-Base is split to train/val set. Sub-datasets (CCPD-DB, CCPD-Blur, CCPD-FN, CCPD-Rotate, CCPD-Tilt, CCPD-Challenge) in CCPD are exploited for test.
 ****
-UPdate on 09/16/2020. We add a new energy vehicle sub-dataset (CCPD-Green) which has an eight-digit license plate number.
+## UPdate on 09/16/2020. We add a new energy vehicle sub-dataset (CCPD-Green) which has an eight-digit license plate number.
+
 It can be downloaded from:
  - [BaiduYun Drive(code: ol3j)](https://pan.baidu.com/s/1JSpc9BZXFlPkXxRK4qUCyw)
  
