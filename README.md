@@ -13,7 +13,11 @@ It can be downloaded from and extract by (tar xf CCPD2019.tar.xz):
 The split file is available under 'split/' folder.
 
 Images in CCPD-Base is split to train/val set. Sub-datasets (CCPD-DB, CCPD-Blur, CCPD-FN, CCPD-Rotate, CCPD-Tilt, CCPD-Challenge) in CCPD are exploited for test.
-
+****
+UPdate on 09/16/2020. We add a new energy vehicle sub-dataset (CCPD-Green) which has an eight-digit license plate number.
+It can be downloaded from:
+ - [BaiduYun Drive(code: ol3j)](https://pan.baidu.com/s/1JSpc9BZXFlPkXxRK4qUCyw)
+ 
 ### metric
 As each image in CCPD contains only a single license plate (LP). Therefore, we do not consider recall and concerntrate on precision. Detectors are allowed to predict only one bounding box for each image.
 
