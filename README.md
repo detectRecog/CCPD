@@ -16,11 +16,11 @@ Images in CCPD-Base is split to train/val set. Sub-datasets (CCPD-DB, CCPD-Blur,
 ****
 ## UPdate on 16/09/2020. We add a new energy vehicle sub-dataset (CCPD-Green) which has an eight-digit license plate number.
 
-It can be downloaded from:
- - [BaiduYun Drive(code: ol3j)](https://pan.baidu.com/s/1JSpc9BZXFlPkXxRK4qUCyw)
- 
+It can be downloaded from: 
  - [Google Drive](https://drive.google.com/file/d/1m8w1kFxnCEiqz_-t2vTcgrgqNIv986PR/view?usp=sharing) 
  
+ - [BaiduYun Drive(code: ol3j)](https://pan.baidu.com/s/1JSpc9BZXFlPkXxRK4qUCyw)
+  
 ### metric
 As each image in CCPD contains only a single license plate (LP). Therefore, we do not consider recall and concerntrate on precision. Detectors are allowed to predict only one bounding box for each image.
 
