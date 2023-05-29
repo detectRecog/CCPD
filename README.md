@@ -75,6 +75,7 @@ This repository is designed to provide an open-source dataset for license plate 
 │   ├── modules
 │   │   ├── detection.py --> localization network
 │   │   ├── recognition.py --> end-to-end recognition network
+│   │   ├── utils.py --> Implementation of the ROI pooling function from the original paper
 ├── LICENSE
 
 
