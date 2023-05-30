@@ -78,7 +78,7 @@ This repository is designed to provide an open-source dataset for license plate 
 │   │   ├── utils.py --> ROI pooling function from the original paper
 │   ├── assets --> Demo images
 ├── LICENSE
-
+```
 
 ## Setup
 ### Python environment
