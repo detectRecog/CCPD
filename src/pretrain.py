@@ -38,16 +38,7 @@ if __name__ == "__main__":
         # fast_dev_run=True,
         max_epochs=args.max_epochs,
         callbacks=[checkpoint_callback, lr_logger],
-        # limit_train_batches=0.05,
-        # limit_test_batches=0.05,
-        # limit_val_batches=0.05,
         log_every_n_steps=1,
-        # logger=WandbLogger(
-        #     entity="mtp-ai-board-game-engine",
-        #     project="cv-project",
-        #     group="pretraining-batch-size=32",
-        #     log_model="all",
-        # ),
         accelerator="gpu" if args.use_gpu else "cpu",
         devices=args.devices,
     )
