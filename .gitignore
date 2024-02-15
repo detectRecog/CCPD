@@ -1,3 +1,6 @@
 lightning_logs
+.idea
+__pycache__
 resources
 data
+.DS_Store
