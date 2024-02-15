@@ -1,0 +1,5 @@
+lightning==2.0.2
+opencv-python>=4.7.0
+pandas==2.0.2
+torch==2.0.1
+torchvision==0.15.2

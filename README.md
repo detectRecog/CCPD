@@ -9,29 +9,30 @@ It can be downloaded from and extract by (tar xf CCPD2019.tar.xz):
  - [BaiduYun Drive(code: hm0u)](https://pan.baidu.com/s/1i5AOjAbtkwb17Zy-NQGqkw)
 
 
-#### train\val\test split
-The split file is available under 'split/' folder.
+#### Training/Testing/Validation Split
 
-Images in CCPD-Base is split to train/val set. Sub-datasets (CCPD-DB, CCPD-Blur, CCPD-FN, CCPD-Rotate, CCPD-Tilt, CCPD-Challenge) in CCPD are exploited for test.
+The relevant splits are available under the 'split/' folder once the dataset is downloaded and extracted.
+
+Images in CCPD-Base are split to training/validation set. Sub-datasets (CCPD-DB, CCPD-Blur, CCPD-FN, CCPD-Rotate, CCPD-Tilt, CCPD-Challenge) in CCPD are used for testing.
 ****
-## UPdate on 16/09/2020. We add a new energy vehicle sub-dataset (CCPD-Green) which has an eight-digit license plate number.
+## Update on 16/09/2020. We add a new energy vehicle sub-dataset (CCPD-Green) which has an eight-digit license plate number.
 
 It can be downloaded from: 
  - [Google Drive](https://drive.google.com/file/d/1m8w1kFxnCEiqz_-t2vTcgrgqNIv986PR/view?usp=sharing) 
  
  - [BaiduYun Drive(code: ol3j)](https://pan.baidu.com/s/1JSpc9BZXFlPkXxRK4qUCyw)
   
-### metric
-As each image in CCPD contains only a single license plate (LP). Therefore, we do not consider recall and concerntrate on precision. Detectors are allowed to predict only one bounding box for each image.
+### Metrics
+Each image in CCPD contains only a single license plate (LP). Therefore, we do not consider recall and concentrate on precision. Detectors are allowed to predict only one bounding box for each image.
 
-- Detection. For each image, the detector outputs only one bounding box. The bounding box is considered to be correct if and only if its IoU with the ground truth bounding box is more than 70% (IoU > 0.7). Also, we compute AP on the test set. 
+- Detection: For each image, the detector outputs only one bounding box. The bounding box is considered to be correct if and only if its IoU with the ground truth bounding box is more than 70% (IoU > 0.7). Also, we compute AP on the test set. 
 
-- Recognition. A LP recognition is correct if and only if all characters in the LP number are correctly recognized.
+- Recognition: A LP recognition is correct if and only if all characters in the LP number are correctly recognized.
 
-#### benchmark
+#### Benchmark
 
 If you want to provide more baseline results or have problems about the provided results. Please raise an issue.
-##### detection
+##### Detection
 
 |             | FPS |   AP  |   DB  |  Blur |   FN  | Rotate |  Tilt | Challenge |
 |---|---|---|---|---|---|---|---|---|
@@ -40,7 +41,7 @@ If you want to provide more baseline results or have problems about the provided
 |    SSD512   |  12 | 87.83 | 69.99 | 84.23 | 80.65 |  96.50 | 91.26 |   92.14   |
 |  YOLOv3-320 |  52 | 87.23 | 71.34 | 82.19 | 82.44 |  96.69 | 89.17 |   91.46   |
 
-##### recognition 
+##### Recognition 
 We provide baseline methods for recognition by appending a LP recognition model Holistic-CNN (HC) (refer to paper 'Holistic recognition of low quality license plates by cnn using track annotated data') to the detector.
 
 |             | FPS |   AP  |   DB  |  Blur |   FN  | Rotate |  Tilt | Challenge |
@@ -61,71 +62,52 @@ This repository is designed to provide an open-source dataset for license plate 
 }
 ```
 
+## Repository Structure
+```
+├── README.md
+├── Zhenbo_Xu_Towards_End-to-End_License_ECCV_2018_paper.pdf
+├── .gitignore
+├── requirements.txt
+├── src
+│   ├── data
+│   │   ├── datasets.py --> Dataset classes
+│   │   ├── setup_utils.py --> Setup environment variables (etc..) 
+│   ├── modules
+│   │   ├── detection.py --> localization network
+│   │   ├── recognition.py --> end-to-end recognition network
+│   │   ├── utils.py --> ROI pooling function from the original paper
+│   ├── assets --> Demo images
+├── LICENSE
 
 
-## Specification of the categorise above:
-
-- **rpnet**: The training code for a license plate localization network and an end-to-end network which can detect the license plate bounding box and recognize the corresponding license plate number in a single forward. In addition, demo.py and demo folder are provided for playing demo.
-
-- **paper.pdf**: Our published eccv paper.
-
-
-## Demo
-
-Demo code and several images are provided under rpnet/ folder, after you obtain "fh02.pth" by downloading or training, run demo as follows, the demo code will modify images in rpnet/demo folder and you can check by opening demo images.
-
+## Setup
+### Python environment
+```bash
+  conda create -n ccpd python=3.11 -y && activate ccpd && pip install -r requirements.txt
 ```
 
-  python demo.py -i [ROOT/rpnet/demo/] -m [***/fh02.pth]
+### Dataset
+1. Download the full dataset and extract it
+2. Point the environment `DATA_DIR` variable set in `src/data/setup_utils.py` to the dataset path (i.e., the directory containing the directory `CCPD2019`)
 
+### Pretraining
+```bash
+python src/pretrain.py --batch_size 64 --max_epochs 100 --use_gpu --devices 0,1,2,3
 ```
+
+### Training
+```bash
+python src/train.py --batch_size 64 --max_epochs 100 --use_gpu --devices 0,1,2,3 --pretrained_model_path [path to pretrained model .ckpt file]
+```
+
+### Testing
+Testing is done at the end of training. 
 
 ### The nearly well-trained model for testing and fun (Short of time, trained only for 5 epochs, but enough for testing): 
 
 We encourage the comparison with SOTA detector like FCOS rather than RPnet as the architecture of RPnet is very old fashioned.
 - Location module wR2.pth [google_drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-), [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)
 - rpnet model fh02.pth [google_drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv), [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ).
-
-## Training instructions
-
-Input parameters are well commented in python codes(python2/3 are both ok, the version of pytorch should be >= 0.3). You can increase the batchSize as long as enough GPU memory is available.
-
-#### Enviorment (not so important as long as you can run the code): 
-
-- python: pytorch(0.3.1), numpy(1.14.3), cv2(2.4.9.1). 
-- system: Cuda(release 9.1, V9.1.85)
-
-#### For convinence, we provide a trained wR2 model and a trained rpnet model, you can download them from google drive or baiduyun.
-
-
-
-First train the localization network (we provide one as before, you can download it from [google drive](https://drive.google.com/open?id=1l_tIt7D3vmYNYZLOPbwx8qJpPVM82CP-) or [baiduyun](https://pan.baidu.com/s/1Q3fPDHFYV5uibWwIQxPEOw)) defined in wR2.py as follows:
-
-```
-
-  python wR2.py -i [IMG FOLDERS] -b 4
-
-```
-
-After wR2 finetunes, we train the RPnet (we provide one as before, you can download it from [google drive](https://drive.google.com/open?id=1YYVWgbHksj25vV6bnCX_AWokFjhgIMhv) or [baiduyun](https://pan.baidu.com/s/1sA-rzn4Mf33uhh1DWNcRhQ)) defined in rpnet.py. Please specify the variable wR2Path (the path of the well-trained wR2 model) in rpnet.py.
-
-```
-
-  python rpnet.py -i [TRAIN IMG FOLDERS] -b 4 -se 0 -f [MODEL SAVE FOLDER] -t [TEST IMG FOLDERS]
-
-```
-
-
-
-## Test instructions
-
-After fine-tuning RPnet, you need to uncompress a zip folder and select it as the test directory. The argument after -s is a folder for storing failure cases. 
-
-```
-
-  python rpnetEval.py -m [MODEL PATH, like /**/fh02.pth] -i [TEST DIR] -s [FAILURE SAVE DIR]
-
-```
 
 ## Dataset Annotations
 
